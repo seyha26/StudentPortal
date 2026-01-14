@@ -9,7 +9,9 @@ namespace StudentPortal.Data
         : base(options)
     {
     }
-    // ... DbSet properties
+
     public DbSet<Student> Students { get; set; }
+    public DbSet<Enrollment> Enrollments { get; set; }
+    public DbSet<Course> Courses { get; set; }
 }
 }
