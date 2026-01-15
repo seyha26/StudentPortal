@@ -5,13 +5,13 @@ namespace StudentPortal.Service
     public interface IEnrollmentService
     {
         Task<List<Enrollment>> GetAllEnrollments ();
-        Task<Enrollment?> GetEnrollmentById (int id);
+        Task<Enrollment?> GetEnrollmentById (string id);
         Task<Enrollment> CreateEnrollment (Enrollment enrollment);
         Task<Enrollment> UpdateEnrollment (Enrollment enrollment);
         Task<Enrollment> DeleteEnrollment (Enrollment enrollment);
 
 
-        Task<Enrollment> GetEnrollmentsByStudentId (string studentId);
-        Task<Enrollment> GetEnrollmentsByCourseId (string courseId);
+        // Task<Enrollment> GetEnrollmentsByStudentId (string studentId);
+        // Task<Enrollment> GetEnrollmentsByCourseId (string courseId);
     }
 }

@@ -2,12 +2,12 @@ using StudentPortal.Models;
 
 namespace StudentPortal.Service
 {
-    public interface CourseService
+    public interface ICourseService
     {
         Task<List<Course>> GetAllCourses ();
-        Course GetCourseById(int Id);
-        void CreateCourse(Course course);
-        void UpdateCourse(Course course);
-        void DeleteCourse(Course course);
+        Task<Course> GetCourseById(string Id);
+        Task<Course> CreateCourse(Course course);
+        Task<Course> UpdateCourse(Course course);
+        Task<Course> DeleteCourse(Course course);
     }
 }
