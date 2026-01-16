@@ -8,6 +8,8 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddScoped<ICourseService, CourseServiceImpl>();
+builder.Services.AddScoped<IStudentService, StudentServiceImpl>();
+builder.Services.AddScoped<IEnrollmentService, EnrollmentServiceImpl>();
 
 // builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseMySql(
 //     builder.Configuration.GetConnectionString("StudentPortal"),

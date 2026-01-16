@@ -33,4 +33,19 @@ public class CourseController : ControllerBase
             return NotFound();
         return Ok(course);
     }
+
+    [HttpPut]
+    public async Task<IActionResult> UpdateCourse([FromBody] Course course)
+    {
+        var newCourse = await _courseService.UpdateCourse(course);
+        return Ok(newCourse);
+    }
+
+    [HttpDelete]
+    public async Task<IActionResult> DeleteCourse([FromBody] Course course)
+    {
+        await _courseService.DeleteCourse(course);
+        return Ok("Course deleted successfully.");
+    }
+    
 }

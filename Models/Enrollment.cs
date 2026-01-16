@@ -12,9 +12,5 @@ namespace StudentPortal.Models
         [Required]
         public string CourseId { get; set; }
         public int Grade { get; set; }
-        [ForeignKey("StudentId")]
-        public Student Student { get; set; }
-        [ForeignKey("CourseId")]
-        public Course Course { get; set; }
     }
 }
