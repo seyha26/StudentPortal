@@ -4,44 +4,54 @@ using StudentPortal.Models;
 
 namespace StudentPortal.Service.Implement
 {
-    public class CourseServiceImpl : ICourseService
+    public class EnrollmentServiceImpl : IEnrollmentService
     {
         private readonly ApplicationDbContext _context;
-        public CourseServiceImpl(ApplicationDbContext context)
+        public EnrollmentServiceImpl(ApplicationDbContext context)
         {
             _context = context;
         }
 
-        public async Task<List<Course>> GetAllCourses()
+        public async Task<List<Enrollment>> GetAllEnrollments()
         {
-            var allCourse = await _context.Courses.ToListAsync();
-            return allCourse;
+            var allEnrollment = await _context.Enrollments.ToListAsync();
+            return allEnrollment;
         }
 
-        public async Task<Course> GetCourseById(string id)
+        public async Task<Enrollment> GetEnrollmentById(string id)
         {
-            return await _context.Courses.SingleOrDefaultAsync(c => c.Id == id);
+            return await _context.Enrollments.SingleOrDefaultAsync(c => c.Id == id);
         }
 
-        public async Task<Course> CreateCourse(Course course)
+        public async Task<Enrollment> CreateEnrollment(Enrollment enrollment)
         {
-            _context.Courses.Add(course);
+            _context.Enrollments.Add(enrollment);
             await _context.SaveChangesAsync();
-            return course;
+            return enrollment;
         }
 
-        public async Task<Course> UpdateCourse(Course course)
+        public async Task<Enrollment> UpdateEnrollment(Enrollment enrollment)
         {
-            _context.Courses.Update(course);
+            _context.Enrollments.Update(enrollment);
             await _context.SaveChangesAsync();
-            return course;
+            return enrollment;
         }
 
-        public async Task<Course> DeleteCourse(Course course)
+        public async Task<Enrollment> DeleteEnrollment(Enrollment enrollment)
         {
-            _context.Courses.Remove(course);
+            _context.Enrollments.Remove(enrollment);
             await _context.SaveChangesAsync();
-            return course;
+            return enrollment;
+        }
+
+        public async Task<List<Enrollment>> GetEnrollmentsByStudentId(string studentId)
+        {
+            return await _context.Enrollments.Where(e=> e.StudentId == studentId).ToListAsync();
+        }
+
+        public async Task<List<Enrollment>> GetEnrollmentsByCourseId(string courseId)
+        {
+            return await _context.Enrollments.Where(e => e.CourseId == courseId).ToListAsync();
         }
     }
 }

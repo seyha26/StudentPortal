@@ -9,9 +9,7 @@ namespace StudentPortal.Service
         Task<Enrollment> CreateEnrollment (Enrollment enrollment);
         Task<Enrollment> UpdateEnrollment (Enrollment enrollment);
         Task<Enrollment> DeleteEnrollment (Enrollment enrollment);
-
-
-        // Task<Enrollment> GetEnrollmentsByStudentId (string studentId);
-        // Task<Enrollment> GetEnrollmentsByCourseId (string courseId);
+        Task<List<Enrollment>> GetEnrollmentsByStudentId (string studentId);
+        Task<List<Enrollment>> GetEnrollmentsByCourseId (string courseId);
     }
 }
