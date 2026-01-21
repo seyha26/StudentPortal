@@ -47,15 +47,15 @@ public class EnrollmentController : ControllerBase
     [HttpPost]
     public async Task<IActionResult> Create([FromBody] Enrollment enrollment)
     {
-        var createdEnrollment = _enrollmentService.CreateEnrollment(enrollment);
+        await _enrollmentService.CreateEnrollment(enrollment);
         return Ok(enrollment);
     }
 
     [HttpPut]
     public async Task<IActionResult> Update([FromBody] Enrollment enrollment)
     {
-        var updatedEnrollment = _enrollmentService.UpdateEnrollment(enrollment);
-        return Ok(updatedEnrollment);
+        await _enrollmentService.UpdateEnrollment(enrollment);
+        return Ok(enrollment);
     }
 
     [HttpDelete]

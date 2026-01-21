@@ -29,9 +29,9 @@ public class StudentController : ControllerBase
 
     [HttpGet]
     [Route("{id}")]
-    public async Task<IActionResult> GetStudentById(String id)
+    public async Task<IActionResult> GetStudentById(string id)
     {
-        var student = _studentService.GetStudentById(id);
+        var student = await _studentService.GetStudentById(id);
         return Ok(student);
     }
 
@@ -39,7 +39,7 @@ public class StudentController : ControllerBase
     public async Task<IActionResult> Delete(Student student)
     {
         _studentService.DeleteStudent(student);
-        return Ok("Student record has been deleted.");
+        return Ok(student);
     }
 
     [HttpPut]
