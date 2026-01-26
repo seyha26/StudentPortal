@@ -43,13 +43,12 @@ public class CourseController : ControllerBase
             var course = await _courseService.GetCourseById(id);
             _messageResponse.GetDataSuccess(course);
         }
-        catch (System.Exception)
+        catch (System.Exception ex)
         {
-            
-            throw;
+            _messageResponse.SetErrorMessage(ex.Message);
         }
        
-        return Ok(course);
+        return Ok(_messageResponse);
     }
 
     [HttpPut]

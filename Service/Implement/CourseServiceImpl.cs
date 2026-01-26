@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using StudentPartal.Exceptions;
 using StudentPortal.Data;
 using StudentPortal.Models;
 
@@ -15,11 +16,20 @@ namespace StudentPortal.Service.Implement
         public async Task<List<Course>> GetAllCourses()
         {
             var allCourse = await _context.Courses.ToListAsync();
+            if(allCourse == null)
+            {
+                throw new WebException("400", "No course record.");
+            }
             return allCourse;
         }
 
         public async Task<Course> GetCourseById(string id)
         {
+            Course course = await _context.Courses.SingleOrDefaultAsync(c=>c.Id == id);
+            if(course == null)
+            {
+                throw new WebException("400", "Course not found.");
+            }
             return await _context.Courses.SingleOrDefaultAsync(c => c.Id == id);
         }
 
